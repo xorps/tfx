@@ -1,6 +1,6 @@
-use anyhow::{anyhow, Error};
+use anyhow::{anyhow, Error, Result};
 
-pub fn join(errors: Vec<Error>) -> Result<(), Error> {
+pub fn join(errors: Vec<Error>) -> Result<()> {
     let mut errors = errors.into_iter();
     let Some(a) = errors.next() else {
         return Ok(());
