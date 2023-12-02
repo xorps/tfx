@@ -1,0 +1,14 @@
+[package]
+name = "tfx"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.75"
+clap = { version = "4.4.10", features = ["derive"] }
+rand = "0.8.5"
+rlimit = "0.10.1"
+tokio = { version = "1.34.0", features = ["full"] }
+
+[profile.release]
+lto = "fat"
