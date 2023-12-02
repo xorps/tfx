@@ -1,17 +1,18 @@
 use anyhow::{anyhow, Error};
 
 pub fn join(errors: Vec<Error>) -> Result<(), Error> {
-    if errors.is_empty() {
+    let mut errors = errors.into_iter();
+    let Some(a) = errors.next() else {
         return Ok(());
-    }
-
-    let combined_message = errors
+    };
+    let Some(b) = errors.next() else {
+        return Err(a);
+    };
+    let errors = [a, b]
         .into_iter()
+        .chain(errors)
         .map(|e| e.to_string())
         .collect::<Vec<_>>()
         .join(", ");
-
-    let error = anyhow!("Multiple errors occurred: {}", combined_message);
-
-    Err(error)
+    Err(anyhow!("Errors: {}", errors))
 }
