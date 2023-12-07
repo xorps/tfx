@@ -42,7 +42,7 @@ async fn validate(semaphore: &Semaphore, path: &Path) -> Result<()> {
 }
 
 pub async fn run_validation(semaphore: &Semaphore, path: &Path) -> Result<()> {
-    //init(semaphore, path).await?;
-    //validate(semaphore, path).await
+    init(semaphore, path).await?;
+    validate(semaphore, path).await?;
     Ok(())
 }

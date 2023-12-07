@@ -1,8 +1,8 @@
 mod cli;
+mod crawl;
 mod errors;
-mod search;
 mod terraform;
 
 pub use cli::Cli;
 pub use cli::Command;
-pub use search::read_dir;
+pub use crawl::start as validate;
